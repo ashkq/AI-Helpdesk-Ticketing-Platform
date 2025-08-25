@@ -1,97 +1,45 @@
-# Cloud Helpdesk Dashboard 💻☁️
+# AI Helpdesk & Ticketing Platform  
 
-A professional-grade Flask web application simulating a real-world IT helpdesk dashboard. Designed to support and edit ticket submissions, display live dashboard summaries, and a mock Azure resource monitor.
+A professional **Flask-based IT helpdesk web application** featuring ticket management, a real-time dashboard, and an **AI-powered troubleshooting assistant**.  
 
----
+The platform simulates a real Tier-1 helpdesk environment where users can submit issues, track ticket status, and interact with an AI chatbot. The AI is **specifically tuned for IT support inquiries only** (e.g., device, login, network, and software troubleshooting) and will not respond to off-topic questions.  
 
-## 📸 Screenshots
-
-### 📝 Ticketing System
-> Users can submit issues with auto-prioritization (High, Medium, Low)
-
-<p align="center">
-  <img src="tickets.PNG" alt="Tickets Page" width="600"/>
-</p>
+🌐 **Website:** https://ai-helpdesk-ticketing-platform.onrender.com  
 
 ---
 
-### 📊 Dashboard Summary
-> Real-time count of total, open, closed, and priority-level tickets
+## 📸 Preview  
 
-<p align="center">
-  <img src="dashboard.PNG" alt="Dashboard Summary" width="600"/>
-</p>
+**Dashboard**  
+![Dashboard](dashboard.PNG)  
 
----
+**Tickets**  
+![Tickets](tickets.PNG)  
 
-### ☁️ Azure Monitor (Mocked)
-> Simulates status of cloud-based resources like VMs and storage accounts
-
-<p align="center">
-  <img src="azure.PNG" alt="Azure Monitor" width="600"/>
-</p>
+**AI Chat**  
+![AI Chat](ai.PNG)  
 
 ---
 
-### 🤖 Helpie – AI Chatbot
-> Friendly AI assistant for basic IT troubleshooting and guidance
+## 🚀 Features  
 
-<p align="center">
-  <img src="ai.PNG" alt="Helpie Chatbot" width="600"/>
-</p>
-
----
-
-## ⚙️ Features
-
-- 🎫 Submit and manage tickets with live status and priority tags
-- ✏️ **Edit existing tickets**: Update priority, add internal helpdesk comments, or reassign status
-- 👥 **Assign tickets to fake helpdesk users** for demo purposes
-- 🧠 Auto-classification using keyword-based logic
-- 📊 Dashboard view with real-time counts
-- ☁️ Azure panel simulating virtual machine and storage status
-- 🤖 **Helpie AI Chatbot**: Handles common IT issues using natural language
-- ✅ Bootstrap 5 responsive design with styled alerts and badges
+- **Ticketing System** – Submit, search, edit, assign, and close tickets with automatic priority tagging (High / Medium / Low).  
+- **Dashboard Analytics** – Real-time counts of total, open, closed, and priority-level tickets.  
+- **AI Chatbot ("Helpie")** – Provides structured troubleshooting steps for IT issues only (power, Wi-Fi, login, printer, etc.).  
+- **Professional UI** – Responsive Bootstrap 5 design with custom styling.  
 
 ---
 
-## 🛠️ Technologies Used
+## 🛠 Tech Stack  
 
-- Python 3 / Flask
-- HTML, CSS, Bootstrap 5
-- JSON (for local ticket and cloud resource data)
-- Git & GitHub
-- Replit (deployment platform)
-
----
-
-## 📁 Project Structure
-cloud-helpdesk-dashboard/
-
-│
-
-├── app.py
-
-├── templates/
-
-├── static/
-
-├── data/
-
-├── requirements.txt
-
-└── README.md
+- **Backend:** Python (Flask)  
+- **Frontend:** Jinja2, Bootstrap 5, custom CSS  
+- **Data:** JSON-based storage for ticket persistence  
+- **AI Integration:** External LLM API with prompt tuning for IT helpdesk scenarios  
+- **Hosting:** Render (cloud deployment)  
 
 ---
 
-## 📩 Questions or Feedback?
+## 📫 Contact  
 
-Reach me at: **ashfaqkhan900@outlook.com**
-
----
-
-## ⚠️ Notice
-
-This project is publicly accessible for demo purposes. Ticket submissions are **not moderated**, so please avoid sharing sensitive or inappropriate content. To make it secure, user authentication and input validation would be required in a production environment.
-
----
+For questions or feedback: **ashfaqkhan900@outlook.com**  
