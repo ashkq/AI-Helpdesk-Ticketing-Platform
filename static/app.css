@@ -1,0 +1,200 @@
+/* Do NOT change Bootstrap priority colors (success/warning/danger). */
+
+/* ---------- Page Background (full height, no cut-off) ---------- */
+html, body { height: 100%; }
+
+body {
+  /* Smooth gradient that covers the whole viewport */
+  background: linear-gradient(180deg, #f7faff 0%, #eef2f8 40%, #e9eef7 100%);
+  background-attachment: fixed;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: #1f2a3a;
+}
+
+/* ---------- Navbar polish + active page highlight ---------- */
+.navbar {
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.35);
+}
+.navbar .nav-link {
+  position: relative;
+}
+.navbar .nav-link.active,
+.navbar .nav-link[aria-current="page"] {
+  color: #fff !important;
+  font-weight: 600;
+}
+.navbar .nav-link.active::after,
+.navbar .nav-link[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: -6px;
+  height: 3px;
+  background: linear-gradient(90deg, #36d1dc 0%, #5b86e5 100%);
+  border-radius: 2px;
+}
+
+/* ---------- Cards & buttons (global) ---------- */
+.card {
+  border-radius: 14px;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+.card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.08);
+}
+
+.btn {
+  border-radius: 10px;
+}
+
+/* ---------- Helpie Chat UI ---------- */
+.helpie-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 12px;
+}
+
+.helpie-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #5b86e5 0%, #36d1dc 100%);
+  color: white;
+  padding: 14px 16px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  margin-bottom: 14px;
+}
+.helpie-header .title {
+  font-weight: 600;
+}
+
+/* Chat log container */
+.chat-log {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 16px;
+  padding: 12px;
+  height: 65vh;
+  overflow-y: auto;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+/* Message bubbles */
+.msg {
+  display: flex;
+  margin: 10px 0;
+}
+.msg.user {
+  justify-content: flex-end;
+}
+.msg.bot {
+  justify-content: flex-start;
+}
+.bubble {
+  max-width: 75%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  line-height: 1.42;
+  font-size: 0.98rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+.msg.user .bubble {
+  background: linear-gradient(135deg, #8EC5FC 0%, #E0C3FC 100%);
+  color: #12233a;
+  border-top-right-radius: 6px;
+}
+.msg.bot .bubble {
+  background: #ffffff;
+  color: #1c2535;
+  border-top-left-radius: 6px;
+}
+
+/* Typing indicator */
+.msg.typing .bubble {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.dots i {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #7a8aa0;
+  margin-right: 3px;
+  animation: blink 1.2s infinite ease-in-out;
+}
+.dots i:nth-child(2) { animation-delay: 0.15s; }
+.dots i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes blink {
+  0%, 80%, 100% { opacity: .2; transform: translateY(0); }
+  40% { opacity: 1; transform: translateY(-3px); }
+}
+
+/* Input area (sticky at bottom of card) */
+.input-area {
+  position: sticky;
+  bottom: 0;
+  margin-top: 12px;
+  background: transparent;
+}
+.chat-input {
+  resize: none;
+  border-radius: 14px;
+  padding: 12px 14px;
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+}
+
+/* Tables (elsewhere in app) */
+table.table th {
+  background: #f7f9fc;
+}
+
+/* ---------- Markdown in chat bubbles ---------- */
+.bubble .md {
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+.bubble .md p {
+  margin: 0.25rem 0 0.7rem;
+}
+.bubble .md ol,
+.bubble .md ul {
+  margin: 0.25rem 0 0.8rem;
+  padding-left: 1.25rem;
+  list-style-position: outside;
+}
+.bubble .md li {
+  margin: 0.25rem 0;
+}
+.bubble .md strong {
+  font-weight: 700;
+}
+.bubble .md code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  background: #f4f6fb;
+  padding: 0.08rem 0.35rem;
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.bubble .md pre {
+  background: #f4f6fb;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  overflow: auto;
+  margin: 0.4rem 0 0.8rem;
+}
+.bubble .md blockquote {
+  margin: 0.4rem 0 0.8rem;
+  padding: 0.4rem 0.8rem;
+  border-left: 3px solid #cbd5e1;
+  color: #475569;
+  background: #f8fafc;
+  border-radius: 6px;
+}

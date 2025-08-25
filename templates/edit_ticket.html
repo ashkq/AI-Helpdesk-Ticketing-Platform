@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Edit Ticket</h2>
+
+<form method="POST" class="mb-4">
+    <div class="mb-2">
+        <label class="form-label">Priority</label>
+        <select name="priority" class="form-select">
+            <option value="High" {% if ticket.priority == 'High' %}selected{% endif %}>High</option>
+            <option value="Medium" {% if ticket.priority == 'Medium' %}selected{% endif %}>Medium</option>
+            <option value="Low" {% if ticket.priority == 'Low' %}selected{% endif %}>Low</option>
+        </select>
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label">Assigned To</label>
+        <select name="assigned" class="form-select">
+            {% for user in users %}
+                <option value="{{ user }}" {% if ticket.assigned == user %}selected{% endif %}>{{ user }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label">Status</label>
+        <select name="status" class="form-select">
+            <option value="Open" {% if ticket.status == 'Open' %}selected{% endif %}>Open</option>
+            <option value="Closed" {% if ticket.status == 'Closed' %}selected{% endif %}>Closed</option>
+        </select>
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label">Issue Description</label>
+        <textarea name="issue" class="form-control" rows="4" required>{{ ticket.issue }}</textarea>
+    </div>
+
+    <button class="btn btn-primary">Save Changes</button>
+    <a href="{{ url_for('tickets') }}" class="btn btn-secondary ms-2">Cancel</a>
+</form>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Helpdesk Summary</h2>
+
+<div class="row text-center">
+  <div class="col-md-4 mb-3">
+    <div class="card border-primary">
+      <div class="card-body">
+        <h5>Total Tickets</h5>
+        <h3 class="text-primary">{{ total }}</h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-3">
+    <div class="card border-success">
+      <div class="card-body">
+        <h5>Open</h5>
+        <h3 class="text-success">{{ open_count }}</h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-3">
+    <div class="card border-secondary">
+      <div class="card-body">
+        <h5>Closed</h5>
+        <h3 class="text-secondary">{{ closed_count }}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row text-center">
+  <div class="col-md-4 mb-3">
+    <div class="card border-danger">
+      <div class="card-body">
+        <h5>High Priority</h5>
+        <h3 class="text-danger">{{ high }}</h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-3">
+    <div class="card border-warning">
+      <div class="card-body">
+        <h5>Medium Priority</h5>
+        <h3 class="text-warning">{{ medium }}</h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-3">
+    <div class="card border-success">
+      <div class="card-body">
+        <h5>Low Priority</h5>
+        <h3 class="text-success">{{ low }}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+ENV/
+
+# Env keys
+.env
+
+# OS/IDE
+.DS_Store
+.vscode/
+.idea/
+
+# App data (keep real tickets out of git)
+data/tickets.json
+
+# Node leftovers (if any)
+node_modules/

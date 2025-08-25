@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="get" action="/tickets" class="row mb-3">
+  <div class="col-md-10">
+    <input type="text" name="search" class="form-control" placeholder="Search tickets..." value="{{ search }}">
+  </div>
+  <div class="col-md-2">
+    <button type="submit" class="btn btn-outline-primary w-100">Search</button>
+  </div>
+</form>
+
+<h2>Submit a Ticket</h2>
+{% if success %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  ✅ Ticket submitted successfully!
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+<form method="POST" class="mb-4">
+    <input name="name" class="form-control mb-2" placeholder="Your Name" required>
+    <textarea name="issue" class="form-control mb-2" placeholder="Describe your issue" required></textarea>
+    <button class="btn btn-primary">Submit</button>
+</form>
+
+<h3>Open Tickets</h3>
+<table class="table table-bordered align-middle">
+    <thead>
+      <tr>
+        <th>ID</th><th>Name</th><th>Issue</th><th>Priority</th><th>Status</th><th>Assigned</th><th>Created</th><th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for ticket in tickets %}
+        <tr>
+            <td>{{ ticket.id }}</td>
+            <td>{{ ticket.name }}</td>
+            <td>{{ ticket.issue }}</td>
+            <td>
+                {% if ticket.priority == 'High' %}
+                    <span class="badge bg-danger">High</span>
+                {% elif ticket.priority == 'Medium' %}
+                    <span class="badge bg-warning text-dark">Medium</span>
+                {% else %}
+                    <span class="badge bg-success">Low</span>
+                {% endif %}
+            </td>
+            <td>{{ ticket.status }}</td>
+            <td>{{ ticket.assigned or "Unassigned" }}</td>
+            <td>{{ ticket.created }}</td>
+            <td class="text-nowrap">
+                {% if ticket.status != 'Closed' %}
+                    <a href="/tickets/close/{{ ticket.id }}" class="btn btn-sm btn-success">Close</a>
+                {% else %}✓{% endif %}
+                <a href="/tickets/edit/{{ ticket.id }}" class="btn btn-sm btn-outline-primary ms-1">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

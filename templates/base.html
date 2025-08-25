@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_title or 'Helpdesk Dashboard' }}</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+  <!-- Your app CSS (fixed path) -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+
+  <!-- Bootstrap bundle -->
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
+  <a class="navbar-brand me-4" href="{{ url_for('home') }}">Helpdesk</a>
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMain" aria-controls="navbarsMain" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsMain">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item me-3">
+        <a class="nav-link {% if request.path.startswith('/tickets') %}active{% endif %}" href="{{ url_for('tickets') }}">
+          Tickets
+          {% if session.get('open_count') %}
+            <span class="badge bg-danger">{{ session.get('open_count') }}</span>
+          {% endif %}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.path.startswith('/helpie') %}active{% endif %}" href="{{ url_for('helpie') }}">Helpie (AI)</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  {% block content %}{% endblock %}
+</div>
+</body>
+</html>

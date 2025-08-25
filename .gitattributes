@@ -1,0 +1,14 @@
+* text=auto
+
+# Use LF in the repo for source files
+*.py   text eol=lf
+*.html text eol=lf
+*.css  text eol=lf
+*.js   text eol=lf
+*.json text eol=lf
+*.md   text eol=lf
+*.txt  text eol=lf
+*.sh   text eol=lf
+
+# If you ever add Windows scripts, keep CRLF for them
+*.bat  text eol=crlf
