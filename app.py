@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, render_template_string, jsonify
+from flask import Flask, render_template, request, redirect, url_for, session, render_template_string, jsonify, abort
 import json
 import uuid
 import os
@@ -16,17 +16,32 @@ except Exception:
 app = Flask(__name__)
 app.secret_key = '93jsdf983jdfQWEr9023r'
 
-TICKETS_FILE = 'data/tickets.json'
+# --- Robust data paths + auto-create store ---
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, "data")
+TICKETS_FILE = os.path.join(DATA_DIR, "tickets.json")
 
 # -----------------------------
 # Utilities
 # -----------------------------
 def load_tickets():
-    with open(TICKETS_FILE, 'r') as f:
-        return json.load(f)
+    # Make sure folder/file exist so the app never crashes on first run
+    os.makedirs(DATA_DIR, exist_ok=True)
+    if not os.path.exists(TICKETS_FILE):
+        with open(TICKETS_FILE, "w", encoding="utf-8") as f:
+            f.write("[]")
+        return []
+    try:
+        with open(TICKETS_FILE, "r", encoding="utf-8") as f:
+            raw = f.read().strip()
+            return json.loads(raw) if raw else []
+    except Exception:
+        # If the file ever gets corrupted, fail soft with an empty list
+        return []
 
 def save_tickets(tickets):
-    with open(TICKETS_FILE, 'w') as f:
+    os.makedirs(DATA_DIR, exist_ok=True)
+    with open(TICKETS_FILE, "w", encoding="utf-8") as f:
         json.dump(tickets, f, indent=4)
 
 def strip_think_tags(text: str) -> str:
@@ -209,7 +224,7 @@ def edit_ticket(ticket_id):
 
     return render_template('edit_ticket.html', ticket=ticket, users=fake_users)
 
-from flask import abort
+# Azure page removed; keep a stub so old links don't 500
 @app.route('/azure')
 def azure():
     abort(410)  # Gone
